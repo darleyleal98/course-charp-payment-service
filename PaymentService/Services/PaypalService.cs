@@ -2,17 +2,12 @@
 
 namespace PaymentService.Services
 {
-    public class PaypalService : OnlinePaymentService
+    public class PaypalService : IOnlinePaymentService
     {
-        public double Interest(double amount, int months)
-        {
-            double value = amount / months;
-            return value +
-        }
+        private const double FeePercentage = 0.02;
+        private const double MonthlyInterest = 0.01;
 
-        public double PaymentFee(double amount)
-        {
-            throw new NotImplementedException();
-        }
+        public double PaymentFee(double amount) => amount * FeePercentage;
+        public double Interest(double amount, int months) => amount * MonthlyInterest * months;
     }
 }

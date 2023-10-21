@@ -5,16 +5,18 @@ namespace PaymentService.Entities
 {
     public class Contract
     {
-        private int Number {  get; set; }
-        private DateTime Date {  get; set; }
-        private Double TotalValue { get; set; }
-        List<Installment> installments = new List<Installment> { };
+        public int Number {  get; set; }
+        public DateTime Date {  get; set; }
+        public Double TotalValue { get; set; }
+        List<Installment> Installments;
 
         public Contract(int number, DateTime dateTime, double totalValue)
         {
             Number = number;
             Date = dateTime;
             TotalValue = totalValue;
+            Installments = new List<Installment>();
         }
+        public void AddInstallment(Installment installment) => Installments.Add(installment);
     }
 }
